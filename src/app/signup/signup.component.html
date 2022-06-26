@@ -1,0 +1,72 @@
+<body>
+    <div class='card-header'>
+        <h3 style="text-align: center;">{{title}}</h3>
+    </div>
+        <div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 5%; padding-bottom: 10%;">
+        <form class="form" [formGroup]='newUser' (ngSubmit)='userSignUp()' enctype="multipart/form-data">
+            <div class='form-group'>
+                <label for="name">Enter Name</label>
+                <input type="text" class='form-control' formControlName='name' name='name'>
+            </div>
+            <span class='text-danger' *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>
+                Name is Required
+            </span>
+            <br>
+
+            <div class='form-group'>
+                <label for="email" >Enter Email Address</label>
+                <input type="email" class='form-control' formControlName='email' name='email'>
+            </div>
+            <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+                Email is Required
+            </span>
+            <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.email'>
+                Enter a valid Email
+            </span>
+            <br>
+
+            <div class='form-group'>
+                <label for="password">Enter Password</label>
+                <input type="password" class='form-control' formControlName='password' name='password'>
+            </div>
+            <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+                Password is required
+            </span>
+            <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.pattern'>
+                Password must contain a minimum of 8 characters with atleast 1 uppercase, 1 lowercase, 1 digit and 1 special character
+            </span>
+            <br>
+
+            <!-- <div class='form-group'>
+                <label for="password_2">Re-enter Password</label>
+                <input type="password" class='form-control' formControlName='password_2' name='password_2'>
+            </div>
+            <span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.required'>
+                Please Re-enter Password
+            </span>
+            <span class='text-danger' *ngIf='(formControl.password_2.touched || submitted) && formControl.password_2.errors?.'>
+                Please Re-enter Password
+            </span>
+            <br> -->
+
+            <div class='form-group'>
+                <label for="phone">Enter Phone Number</label>
+                <input type="phone" class='form-control' formControlName='phone' name='phone' required> 
+            </div>
+            <span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.required'>
+                Mobile Number is Required
+            </span>
+            <span class="text-danger" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.pattern'>
+                Mobile Number is Required
+            </span>
+            <br>
+            <button class="btn btn-primary" style="margin-left: 40%;" [disabled]="newUser.invalid">Register</button>
+            <br>
+            <div class='form-group text-center text-danger' *ngIf="errorMsg">
+                <br>An account with the Email ID is alredy registered. Please Log In or create new account using a new Email ID.
+            </div>
+        </form>
+        </div>
+    </body>
+    
+    

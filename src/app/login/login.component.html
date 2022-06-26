@@ -1,0 +1,28 @@
+<body>
+<div class='card-header'>
+    <h3 style="text-align: center;">Log In</h3>
+</div>
+    <h2 style="text-align: center; margin-top: 5%;">Login to explore!!</h2>
+    <div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 5%; padding-bottom: 10%;">
+    <form class="form" [formGroup]='user' (ngSubmit)='userLogin()' enctype="multipart/form-data">
+      <div class='form-group'>
+        <label for="email">Email</label>
+        <input type="email" class='form-control' formControlName='email' name='email'>
+      </div>
+      <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+      </span>
+      <br>
+      <div class='form-group'>
+        <label for="password">Password</label>
+        <input type="password" class='form-control' formControlName='password' name='password'>
+      </div>
+      <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+      </span>
+      <div class='form-group text-center text-danger' *ngIf="errorMsg">
+          Email ID or Password is incorrect.
+      </div><br>
+      <button class="btn btn-primary" style="margin-left: 40%;" [disabled]="user.invalid">Sign In</button>
+    </form>
+    </div>
+</body>
+

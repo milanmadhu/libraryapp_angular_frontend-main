@@ -1,0 +1,27 @@
+<body>
+    <div class='card-header'>
+        <br>
+        <h3 style="text-align: center;">{{title}}</h3>
+        <br>
+    </div>
+    <div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 6%; padding-bottom: 10%;">
+        <form class="form" [formGroup]='newAuthor' (ngSubmit)='addAuthor()' enctype="multipart/form-data">
+          <div class='form-group'>
+            <label for="name">Name</label>
+            <input type="text" class='form-control' formControlName='name'>
+          </div>
+          <br>
+          <div class='form-group'>
+            <label for="description">Description</label>
+            <input type='text' class='form-control' formControlName='description'>
+          </div>
+          <br>
+          <div class='form-group'>
+            <label for="image">Image Link</label>
+            <input type="text" class='form-control' formControlName='image'>
+          </div>
+          <br>
+          <button class="btn btn-primary" style="margin-left: 35%;">Add Author</button>
+        </form>
+    </div>
+</body>
